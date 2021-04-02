@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+		<!-- 從https://start.spring.io/ 可以下載spring-boot 的初始包 其中有包含 maven -> mvnw 或是gradle的執行檔 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -27,6 +28,69 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- 具體來說 做啥我不知道 反正就是 可以用 RestController 這個 Annotation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.3.4.RELEASE</version>
+			<exclusions>
+				<!-- 排除 遷入的 tomcat -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- 不用tomcat 用更屌的 undertow -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+			<version>2.2.1.RELEASE</version>
+		</dependency>
+
+
+		<!-- JPA 引入 JPA + hibernate 是實現 ORM 的套件
+		     JPA 是規範 可以上網查 JPA 的規範怎麼寫
+		     Hibernate 是實現 JPA 的東西  -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>2.2.6.RELEASE</version>
+		</dependency>
+
+		<!-- 用 Hibernate 一些比較潮的東西要用這個 -->
+		<!-- https://mvnrepository.com/artifact/com.vladmihalcea/hibernate-types-52 -->
+		<dependency>
+			<groupId>com.vladmihalcea</groupId>
+			<artifactId>hibernate-types-52</artifactId>
+			<version>2.9.13</version>
+		</dependency>
+
+		<!-- 使用 postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- db 相關 到此為止 -->
+
+		<!-- SpringBoot整合springfox-swagger2 -->
+		<!-- OPEN API 也就是把你的API 自動轉成文件的東西 超神奇的東西
+		     到config 找 Swagger 看設定-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<!-- OPEN API 也就是把你的API 自動轉成文件的東西 超神奇的東西 -->
+
 	</dependencies>
 
 	<build>

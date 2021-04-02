@@ -1,0 +1,51 @@
+# 這個 yml 是一個設定檔的格式 可以去查一下 yaml 設定 還是 ymal 忘記了
+# 反正就是給spring-boot 看的設定黨 一般來說名稱就是 application.yml 之類的
+# 預設其實是 application.properties 之類的檔案吧 那樣看起來不潮 所以我都用 yml 不過效果是一樣的
+#
+
+
+server:
+  port: 8000 # 要運行在哪個port 網路導論相關知識 自己學
+  servlet:
+    context-path: /api # 這個是設定 你的請求的路徑 加了這個之後 比如說你的那個 User的ＡＰＩ 就都會變成 /api/user 開頭
+spring:
+  servlet:
+    multipart:
+      max-file-size: 150MB # 傳檔案的上限
+  main:
+    allow-bean-definition-overriding: true # 有些spring-boot 的bean 你要override 就要加這個
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_name # jdbc 去連接 postgresql
+    username: postgres #使用者名稱 通常要有密碼啦 我懶得加 如果DB 只有本機能連 不加沒差 如果可以別台機器連 就一定要加入
+  jpa:
+    generate-ddl: true # 這邊有幾行是 你執行之後 db會自動 建立table 忘記哪些 反正有這個 自己查
+    open-in-view: true
+    properties:
+      hibernate: # hibernate 相關設定
+        #format_sql: true
+        show-sql: true
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect # 這個我忘了是啥 反正好像很潮
+        ddl-auto: create-drop
+        jdbc:
+          time_zone: GMT+8
+  enable:
+    scheduling: true # 設計排成的 等你要用在跟我講 或是自己學
+
+logging:
+  file:
+    path: /Users/lvbaiyan/Desktop/nineder/ad-platform/log  # log 輸出的位置 現在這是我的電腦放的位置
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace # 這些是把 jpa hibernate 對db做的query 顯示在log 上
+        SQL: debug
+
+sample:
+  schedule:
+    string: PT2S # 忘了這是三小 不管他
+
+debug.mode: true # 忘了這是三小 不管他
