@@ -19,6 +19,7 @@ public class SwaggerConfig {
 
     /**
      * 反正就是設定 我也還沒研究 直接照抄就好
+     * http://127.0.0.1:8000/api/swagger-ui.html   swagger 從這個網址去看
      */
     @Bean
     public Docket swaggerSetting() {
